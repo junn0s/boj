@@ -33,3 +33,41 @@ def binary(low, high):
         
 binary(0, len*2)
 print(res)
+
+
+
+
+
+
+
+################################################################
+
+
+
+
+
+
+def binary(low, high, n):
+    if high < low:
+        return high
+    
+    mid = (low + high) // 2
+    tmp = 0
+    for item in arr:
+        tmp += item // mid
+        
+    if tmp >= n: 
+        return binary(mid+1, high, n)
+    else:
+        return binary(low, mid-1, n) 
+
+k, n = map(int, input().split())
+arr = []
+total = 0
+for _ in range(k):
+    tmp = int(input())
+    total += tmp
+    arr.append(tmp)
+
+max_len = total // n
+print(binary(1, max_len, n))
